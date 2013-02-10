@@ -1,0 +1,72 @@
+
+Kilobot Development
+Antti Halme, Aalto University, 2012
+
+
+FILES
+======
+ .aps    - AVR Studio projects
+ .aws    - AVR Studio thing (generated as necessary)
+ .[ch]   - sources
+
+
+DEVELOPMENT
+===========
+Every projects empties the "\BUILD"-directory and writes a new hex file there, then uploaded via OHC to KBs.
+
+Easiest way to start a new project:
+  1. copy KBShouter.aps to KBMyProgram.aps (other existing project are fine, may have more stuff)
+  2. do a keyword replace (e.g. Notepad) on KBMyProgram.aps: "KBShouter" -> "KBMyProgram"
+  3. copy KBShouter.c to KBMyProgram.c
+  4. open KBMyProgram.aps with AVR Studio
+  5. ???
+  6. Profit
+
+
+CALIBRATION
+===========
+
+Aiming for 90deg/4.5s angular velocity.
+
+
+NOTE
+====
+
+Size is an issue: 
+ - hard  SRAM bound    2KB
+ - hard FLASH bound   32KB
+
+ram = data+bss
+flash = text+data
+
+  Run... >> cmd
+
+ $>  cd C:\Documents and Settings\user\Desktop\kbcode\build
+ $>  C:\WinAVR-20100110\bin\avr-size.exe *.elf *.hex
+
+e.g.
+   text    data     bss     dec     hex filename
+  12294     464     232   12990    32be KBAbot.elf
+
+Aim for: dec - bss < 12800
+
+
+
+ LICENSING
+
+
+    Kilobot code - Kilobot programs and project files
+    Copyright (C) 2012 Antti Halme / ICS / Aalto University
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
